@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{posts.title_tag}}      
+{% endblock %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog Post</title>
+
+</head>
+<body>
+
+
+{% block content%}
+
+  <h1>{{posts.title}}</h1>
+  <small>by {{posts.author}}</small><a href="{% url 'update_post' post.id %}">Edit Post</a>
+  <small>{{posts.created_at}}</small>
+  <p>{{posts.body}}</p>
+  <a href="{% url 'index' %}" class="btn btn-secondary">Back</a>
+
+<h2>comments</h2>
+{% if not posts.comments.all %}
+  No comments yet....<a href="">Add One</a>
+{% else %}
+  {% for comment in posts.comments.all %}
+    <strong>
+      {{comment.author}}
+      {{comment.date_added}}
+    </strong>
+    <br>
+    {{comment.body}}<br>
+    <br>
+  {% endfor %}
+{% endif %}
+<a href="">Add Comment</a>
+
+{% endblock %}
+</body>
+</html>
+

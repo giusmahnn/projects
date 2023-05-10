@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Register Page      
+{% endblock %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale">
+<title>Register to Giusmahn's blog</title>
+</head>
+<body>
+    <h1>Sign Up Below</h1>
+    
+    {% for message in messages%}
+    <h5>{{message}}</h5>
+    {% endfor %}
+
+    <form method="POST" action="register">
+        {% csrf_token %}
+        <p>Lastname: <input type="text" name="lastname" placeholder="Enter Lastname"></p>
+        <p>Firstname: <input type="text" name="firstname" placeholder="Enter Firstname"></p>
+        <p>E-mail: <input type="email" name="email" placeholder="Enter your email"></p>
+        <p>Username: <input type="text" name="username" placeholder="Enter your username"></p>
+        <p id="username-suggestion"></p>
+        <p>Password: <input type="password" name="password" placeholder="Enter your password"></p>
+        <p>Confirm Password: <input type="password" name="confirm_password" placeholder="Confirm your password"></p>
+        <input type="submit" value="Sign Up">
+    </form>
+    <script>
+        function checkUsernameAvailability() {
+            const usernameInput = document.getElementById("username");
+            const suggestionElement = document.getElementById("username-suggestion");
+    
+            // Make an asynchronous request to the server to check availability
+            // Here, you can use AJAX, fetch, or any other method to send the request
+    
+            // Assuming the server responds with a JSON object containing the suggestion
+            const response = { "suggestion": "suggested_username" };
+    
+            // Display the suggestion if available
+            if (response && response.suggestion) {
+                suggestionElement.innerText = "Suggested username: " + response.suggestion;
+            } else {
+                suggestionElement.innerText = "";
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
+
