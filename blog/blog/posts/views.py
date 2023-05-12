@@ -27,5 +27,3 @@ class UpdatePostView(UpdateView):
     model = Post
     template_name = 'update_post.html'
     fields = ['title', 'title_tag', 'body']
-
-

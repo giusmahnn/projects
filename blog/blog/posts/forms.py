@@ -14,4 +14,3 @@ class AddPostForm(forms.ModelForm):
             'author': forms.Select(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'})
         }
-        
