@@ -19,7 +19,9 @@
 {% block content%}
 
   <h1>{{posts.title}}</h1>
-  <small>by {{posts.author}}</small><a href="{% url 'update_post' post.id %}">Edit Post</a>
+  <small>by {{posts.author}}</small><a href="{% url 'update_post' posts.id %}">Edit Post</a>~<small>
+    <a href="{% url 'delete_post' posts.id %}" style="color: red;">Delete Post</a>
+  </small>
   <small>{{posts.created_at}}</small>
   <p>{{posts.body}}</p>
   <a href="{% url 'index' %}" class="btn btn-secondary">Back</a>
