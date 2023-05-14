@@ -11,8 +11,8 @@ def index(request):
 
 
 def post(request, pk):
-    post = Post.objects.get(id=pk)
-    return render(request, 'post.html', {'post': post})
+    posts = Post.objects.get(id=pk)
+    return render(request, 'post.html', {'posts': posts})
 
 
 
