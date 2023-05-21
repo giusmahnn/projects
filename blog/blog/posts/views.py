@@ -15,8 +15,8 @@ def index(request):
 
 
 def post(request, pk):
-    post = Post.objects.get(id=pk)
-    return render(request, 'post.html', {'post': post})
+    posts = Post.objects.get(id=pk)
+    return render(request, 'post.html', {'posts': posts})
 
 
 
@@ -30,7 +30,6 @@ class UpdatePostView(UpdateView):
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
-    fields = ['title', 'title_tag', 'body']
 
 
 
