@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +17,9 @@
         <h2>{{post.title}}</h2>
         <small>by {{post.author}}</small>
         <small>{{post.date_created}}</small>
-        <small><a href="{% url 'update_post' post.id %}">Edit Post</a></small>~<small><a href="{% url 'delete_post' post.id %}" style="color: red;">Delete Post</a></small>
-        <p>{{post.body|truncatewords:20}}<a style="text-decoration: none; color: blue;" href="/post/{{post.id}}">Read more....</a></p>
+        <small><a href="{% url 'update_post' post.id %}">Edit Post</a></small><small><a href="#">Delete Post</a>
+        </small>
+        <p>{{post.body|truncatewords:20}}<a style="text-decoration: none; color: blue;" href="post/{{ post.id }}">Read more....</a></p>
     </div>
     {% endfor %}
   </div>
