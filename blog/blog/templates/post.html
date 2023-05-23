@@ -20,7 +20,7 @@
 
   <h1>{{posts.title}}</h1>
   <small>by {{posts.author}}</small><a href="{% url 'update_post' posts.id %}">Edit Post</a>~<small>
-    <a href="{% url 'delete_post' posts.id %}" style="color: red;">Delete Post</a>
+    <a href="{% url 'delete_post' posts.id %}"><button type="submit" class="btn btn-danger">Delete</button></a>
   </small>
   <small>{{posts.created_at}}</small>
   <p>{{posts.body}}</p>
