@@ -14,10 +14,14 @@
   <div class="leftcolumn">
     {% for post in posts reversed %}
     <div class="card"> 
-        <h2>{{post.title}}</h2><div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <a href="{% url 'update_post' post.id %}"><button type="submit" class="btn btn-info">Edit Post</button></a>
-          <a href="{% url 'delete_post' post.id %}"><button type="submit" class="btn btn-danger">Delete</button></a>
-        </div>
+        <h2>{{post.title}}</h2>
+
+        {% if user.is_authenticated %}
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{% url 'update_post' post.id %}"><button type="submit" class="btn btn-info">Edit Post</button></a>
+            <a href="{% url 'delete_post' post.id %}"><button type="submit" class="btn btn-danger">Delete</button></a>
+          </div>
+        {% endif %}
         <small>by {{post.author}}</small>
         <small>{{post.date_created}}</small>
         <p>{{post.body|truncatewords:20}}<a style="text-decoration: none; color: blue;" href="post/{{ post.id }}">Read more....</a></p>
